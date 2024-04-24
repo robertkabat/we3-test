@@ -7,18 +7,15 @@ Please ensure that you have installed Docker on your machine as this project mak
 
 To set up the project with Laravel Sail, please follow the instructions below:
 
-- `git clone git@github.com:robertkabat/mkm-test.git` the repository.
+- `git clone git@github.com:robertkabat/we3-test.git` the repository.
 - Navigate to the root directory of the project.
 - Copy the `.env.example` file to a new file named `.env` using the command `cp .env.example .env`.
 
-For ease of use, the `.env` file has been pre-configured with my local environment settings. Please adjust as needed.
+### Settings in `.env`
 
-### Database Settings in `.env`
+This task uses standard configuration for Laravel Sail, so please feel free to follow standard laravel configuration.
 
-All the values are provided in the .env.example file. Please adjust as needed.
-
-If you run into any database issues, please make sure that the database exists and that all the information in your
-final version of the `.env` file is correct.
+## Setting up the project
 
 - Run `composer install` to install the project dependencies.
 - After composer is done, run `./vendor/bin/sail up -d`.
@@ -35,15 +32,15 @@ Navigate to localhost in your browser to make sure the project is up and running
 
 ## Creating a User
 
-- For simplicity user is being seeded along with `--seed` option, as this is not a focus of this task.
+- For simplicity user is being seeded along with `--seed` option, as this is not a focus of this task (email: `dexter@miami.us`, password: `password`).
 
 ## API
 
-Login endpoint: `POST /api/login`, this endpoint takes following body:
+Login endpoint: `POST /api/v1/login`, this endpoint takes following body:
 
 ```json
 {
-    "email": "rob@mkm.com",
+    "email": "dexter@miami.us",
     "password": "password"
 }
 ```
@@ -52,22 +49,166 @@ That should give you a token that you can use to authenticate yourself with the 
 
 ```json
 {
-    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FwaS9sb2dpbiIsImlhdCI6MTcxMzgxNDMwNywiZXhwIjoxNzEzODE3OTA3LCJuYmYiOjE3MTM4MTQzMDcsImp0aSI6Inh6ZXpXeTdvU2lTaGJWZTAiLCJzdWIiOiIxIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.gv9bD5dOcr2-YiU4Jx59CWWjafoImY4-V1rJ1HQqn2w",
-    "token_type": "bearer",
-    "expires_in": 3600
+    "token": "5|Yc2f8rLw1956Mh8tvAUhDtAV4bwpA2YvQ0A73Grze4a84c01"
 }
 ```
 
-Headers:
+## ENPOINTS:
+
+### Product endpoint: `GET /api/v1/products`
+
+### Headers
 
 - `Accept: application/json`
-- `Authorization: Bearer sLdnoDvLjJZ1lRO3b08DLWcu82zHtxgQeDOlV604NGrpYW2005kwdeVgISxw` - remember to replace the token with one generated from the API call :)
+- `Authorization: Bearer 5|Yc2f8rLw1956Mh8tvAUhDtAV4bwpA2YvQ0A73Grze4a84c01` - remember to replace the token with one generated from the API call :)
 
-Product endpoint: `GET /api/products/{SKU}`, it will need the headers mentioned before.
+### Query parameters
+
+- `sku` - filter by SKU
+- `name` - filter by name
+- `page` - page number
+- `perPage` - number of items per page
+
+e.g. `GET /api/v1/products?sku=sku&name=name&page=1&perPage=10`
+
+### Example response
+
+```json
+{
+    "data": [
+        {
+            "id": 1,
+            "brand_id": 1,
+            "sku": "SKU29111417",
+            "name": "debitis",
+            "price": 73,
+            "description": "Odit pariatur officiis ipsa eum voluptatem totam. Consectetur libero autem est placeat. Laborum ut dolor quas et. Sunt consequuntur vitae voluptate ab consectetur molestias.",
+            "created_at": "2024-04-24T21:12:32.000000Z",
+            "updated_at": "2024-04-24T21:12:32.000000Z"
+        }
+    ],
+    "links": {
+        "first": "http://localhost/api/v1/products?page=1",
+        "last": "http://localhost/api/v1/products?page=20",
+        "prev": null,
+        "next": "http://localhost/api/v1/products?page=2"
+    },
+    "meta": {
+        "current_page": 1,
+        "from": 1,
+        "last_page": 20,
+        "links": [
+            {
+                "url": null,
+                "label": "&laquo; Previous",
+                "active": false
+            },
+            {
+                "url": "http://localhost/api/v1/products?page=1",
+                "label": "1",
+                "active": true
+            },
+            {
+                "url": "http://localhost/api/v1/products?page=2",
+                "label": "2",
+                "active": false
+            },
+            {
+                "url": "http://localhost/api/v1/products?page=3",
+                "label": "3",
+                "active": false
+            },
+            {
+                "url": "http://localhost/api/v1/products?page=4",
+                "label": "4",
+                "active": false
+            },
+            {
+                "url": "http://localhost/api/v1/products?page=5",
+                "label": "5",
+                "active": false
+            },
+            {
+                "url": "http://localhost/api/v1/products?page=6",
+                "label": "6",
+                "active": false
+            },
+            {
+                "url": "http://localhost/api/v1/products?page=7",
+                "label": "7",
+                "active": false
+            },
+            {
+                "url": "http://localhost/api/v1/products?page=8",
+                "label": "8",
+                "active": false
+            },
+            {
+                "url": "http://localhost/api/v1/products?page=9",
+                "label": "9",
+                "active": false
+            },
+            {
+                "url": "http://localhost/api/v1/products?page=10",
+                "label": "10",
+                "active": false
+            },
+            {
+                "url": null,
+                "label": "...",
+                "active": false
+            },
+            {
+                "url": "http://localhost/api/v1/products?page=19",
+                "label": "19",
+                "active": false
+            },
+            {
+                "url": "http://localhost/api/v1/products?page=20",
+                "label": "20",
+                "active": false
+            },
+            {
+                "url": "http://localhost/api/v1/products?page=2",
+                "label": "Next &raquo;",
+                "active": false
+            }
+        ],
+        "path": "http://localhost/api/v1/products",
+        "per_page": 1,
+        "to": 1,
+        "total": 20
+    }
+}
+```
+
+
+### Product endpoint: `POST /api/v1/login`
+
+### Headers
+
+- `Accept: application/json`
+
+### Body
+
+```json
+{
+    "email": "dexter@miami.us",
+    "password": "password"
+}
+```
+
+### Example response
+
+```json
+{
+    "token": "5|Yc2f8rLw1956Mh8tvAUhDtAV4bwpA2YvQ0A73Grze4a84c01"
+}
+```
 
 ## Manual Testing
 
-You can use details from the `API` section of this readme file to make an API call via, say, Postman.
+Best way to test the API is to use Postman or Insomnia, as it allows you to easily set headers and query parameters.
 
 # Feature tests
 
