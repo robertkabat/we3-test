@@ -44,7 +44,7 @@ That should give you a token that you can use to authenticate yourself with the 
 
 ## ENPOINTS:
 
-### Product endpoint: `GET /api/v1/products`
+### Product endpoint: `GET /api/v1/products` - provides list of the products, available only for logged in users.
 
 ### Headers
 
@@ -172,7 +172,7 @@ e.g. `GET /api/v1/products?sku=sku&name=name&page=1&perPage=10`
 ```
 
 
-### Product endpoint: `POST /api/v1/login`
+### Product endpoint: `POST /api/v1/login` - allows to obtain the access token upon providing valid credentials.
 
 ### Headers
 
@@ -194,6 +194,9 @@ e.g. `GET /api/v1/products?sku=sku&name=name&page=1&perPage=10`
     "token": "5|Yc2f8rLw1956Mh8tvAUhDtAV4bwpA2YvQ0A73Grze4a84c01"
 }
 ```
+
+To authenticate yourself with the API please include the obtained token within the Authorization header in your request like so 
+`Authorization: Bearer 3|lkQZZVJ55rDjP5X4M49gND6h4topXtvjd5e5v0nn94d11fce` 
 
 ## Manual Testing
 
