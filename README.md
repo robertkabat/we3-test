@@ -196,7 +196,8 @@ e.g. `GET /api/v1/products?sku=sku&name=name&page=1&perPage=10`
 ```
 
 To authenticate yourself with the API please include the obtained token within the Authorization header in your request like so 
-`Authorization: Bearer 3|lkQZZVJ55rDjP5X4M49gND6h4topXtvjd5e5v0nn94d11fce` 
+`Authorization: Bearer 3|lkQZZVJ55rDjP5X4M49gND6h4topXtvjd5e5v0nn94d11fce`. Of course that is only required for endpoints 
+that require authorization.
 
 ## Manual Testing
 
