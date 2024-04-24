@@ -34,17 +34,6 @@ Navigate to localhost in your browser to make sure the project is up and running
 
 - For simplicity user is being seeded along with `--seed` option, as this is not a focus of this task (email: `dexter@miami.us`, password: `password`).
 
-## API
-
-Login endpoint: `POST /api/v1/login`, this endpoint takes following body:
-
-```json
-{
-    "email": "dexter@miami.us",
-    "password": "password"
-}
-```
-
 That should give you a token that you can use to authenticate yourself with the API, e.g:
 
 ```json
