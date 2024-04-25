@@ -34,14 +34,6 @@ Navigate to localhost in your browser to make sure the project is up and running
 
 - For simplicity user is being seeded along with `--seed` option, as this is not a focus of this task (email: `dexter@miami.us`, password: `password`).
 
-That should give you a token that you can use to authenticate yourself with the API, e.g:
-
-```json
-{
-    "token": "5|Yc2f8rLw1956Mh8tvAUhDtAV4bwpA2YvQ0A73Grze4a84c01"
-}
-```
-
 ## ENPOINTS:
 
 ### Product endpoint: `GET /api/v1/products` - provides list of the products, available only for logged in users.
